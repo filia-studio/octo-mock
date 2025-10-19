@@ -21,7 +21,7 @@ export function PatientDetailsDialog({ patient, open, onOpenChange }: PatientDet
         <DialogHeader>
           <DialogTitle>{patient.name}</DialogTitle>
           <DialogDescription>
-            MRN: {patient.mrn} | {patient.age} years old | {patient.gender}
+            Octo ID: {patient.mrn} | {patient.age} years old | {patient.gender}
           </DialogDescription>
         </DialogHeader>
 

@@ -19,7 +19,7 @@ interface Task {
 const mockTasks: Task[] = [
   {
     id: "1",
-    title: "Review Lab Results - Patient MRN-2024-001",
+    title: "Review Lab Results - Patient OH-20251019001",
     description: "Complete blood count and metabolic panel review required",
     assignedTo: "Dr. Smith",
     department: "Cardiology",
@@ -30,7 +30,7 @@ const mockTasks: Task[] = [
   {
     id: "2",
     title: "Schedule Follow-up Appointment",
-    description: "Post-surgery follow-up for Patient MRN-2024-002",
+    description: "Post-surgery follow-up for Patient OH-20251019002",
     assignedTo: "Nurse Johnson",
     department: "Orthopedics",
     priority: "Medium",

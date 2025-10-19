@@ -48,7 +48,7 @@ export const mockPatients: Patient[] = [
     name: "Sarah Johnson",
     age: 45,
     gender: "Female",
-    mrn: "MRN-2024-001",
+    mrn: "OH-20251019001",
     lastVisit: "2024-10-15",
     department: "Cardiology",
     status: "Active",
@@ -69,7 +69,7 @@ export const mockPatients: Patient[] = [
     name: "Michael Chen",
     age: 62,
     gender: "Male",
-    mrn: "MRN-2024-002",
+    mrn: "OH-20251019002",
     lastVisit: "2024-10-17",
     department: "Orthopedics",
     status: "Admitted",
@@ -90,7 +90,7 @@ export const mockPatients: Patient[] = [
     name: "Emily Rodriguez",
     age: 28,
     gender: "Female",
-    mrn: "MRN-2024-003",
+    mrn: "OH-20251019003",
     lastVisit: "2024-10-18",
     department: "Obstetrics",
     status: "Active",
@@ -111,7 +111,7 @@ export const mockPatients: Patient[] = [
     name: "Robert Williams",
     age: 71,
     gender: "Male",
-    mrn: "MRN-2024-004",
+    mrn: "OH-20251019004",
     lastVisit: "2024-10-10",
     department: "Neurology",
     status: "Discharged",
@@ -159,7 +159,7 @@ export function PatientRecordsDashboard() {
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
             <Input
-              placeholder="Search by name, MRN, or department..."
+              placeholder="Search by name, octo ID, or department..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10"
@@ -214,7 +214,7 @@ export function PatientRecordsDashboard() {
         <TableHeader className="bg-[#C80740]">
           <TableRow>
             <TableHead className="text-white py-3 px-4 rounded-tl-[10px]">
-              MRN
+              Octo ID
             </TableHead>
             <TableHead className="text-white py-3 px-4">Patient Name</TableHead>
             <TableHead className="text-white py-3 px-4">Age</TableHead>

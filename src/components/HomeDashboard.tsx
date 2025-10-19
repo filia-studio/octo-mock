@@ -74,7 +74,7 @@ const recentActivities: RecentActivity[] = [
     id: "2",
     type: "appointment",
     title: "Appointment Confirmed",
-    description: "Follow-up consultation for MRN-2024-002",
+    description: "Follow-up consultation for OH-20251019002",
     time: "25 minutes ago",
     user: "Nurse Williams"
   },
@@ -82,7 +82,7 @@ const recentActivities: RecentActivity[] = [
     id: "3",
     type: "task",
     title: "Task Completed",
-    description: "Lab results reviewed for Patient MRN-2024-001",
+    description: "Lab results reviewed for Patient OH-20251019001",
     time: "1 hour ago",
     user: "Dr. Chen"
   },

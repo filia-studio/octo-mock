@@ -25,7 +25,7 @@ const mockAppointments: Appointment[] = [
   {
     id: "1",
     patientName: "Sarah Johnson",
-    patientMRN: "MRN-2024-001",
+    patientMRN: "OH-20251019001",
     department: "Cardiology",
     doctor: "Dr. Smith",
     date: "2024-10-19",
@@ -39,7 +39,7 @@ const mockAppointments: Appointment[] = [
   {
     id: "2",
     patientName: "Michael Chen",
-    patientMRN: "MRN-2024-002",
+    patientMRN: "OH-20251019002",
     department: "Orthopedics",
     doctor: "Dr. Williams",
     date: "2024-10-19",
@@ -53,7 +53,7 @@ const mockAppointments: Appointment[] = [
   {
     id: "3",
     patientName: "Emily Rodriguez",
-    patientMRN: "MRN-2024-003",
+    patientMRN: "OH-20251019003",
     department: "Obstetrics",
     doctor: "Dr. Martinez",
     date: "2024-10-19",
@@ -67,7 +67,7 @@ const mockAppointments: Appointment[] = [
   {
     id: "4",
     patientName: "Robert Williams",
-    patientMRN: "MRN-2024-004",
+    patientMRN: "OH-20251019004",
     department: "Neurology",
     doctor: "Dr. Chen",
     date: "2024-10-19",
@@ -81,7 +81,7 @@ const mockAppointments: Appointment[] = [
   {
     id: "5",
     patientName: "Lisa Anderson",
-    patientMRN: "MRN-2024-005",
+    patientMRN: "OH-20251019005",
     department: "Dermatology",
     doctor: "Dr. Brown",
     date: "2024-10-19",
@@ -95,7 +95,7 @@ const mockAppointments: Appointment[] = [
   {
     id: "6",
     patientName: "James Wilson",
-    patientMRN: "MRN-2024-006",
+    patientMRN: "OH-20251019006",
     department: "Emergency",
     doctor: "Dr. Davis",
     date: "2024-10-19",
@@ -109,7 +109,7 @@ const mockAppointments: Appointment[] = [
   {
     id: "7",
     patientName: "Maria Garcia",
-    patientMRN: "MRN-2024-007",
+    patientMRN: "OH-20251019007",
     department: "Pediatrics",
     doctor: "Dr. Lee",
     date: "2024-10-20",
@@ -123,7 +123,7 @@ const mockAppointments: Appointment[] = [
   {
     id: "8",
     patientName: "David Thompson",
-    patientMRN: "MRN-2024-008",
+    patientMRN: "OH-20251019008",
     department: "Cardiology",
     doctor: "Dr. Smith",
     date: "2024-10-20",
@@ -169,7 +169,7 @@ export function AppointmentsScheduler() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-semibold">Appointment Scheduler</h2>
+          <h2 className="text-2xl font-semibold">Appointments</h2>
           <p className="text-gray-500">Manage patient appointments and schedules</p>
         </div>
         <Button onClick={() => setIsAddOpen(true)}>
