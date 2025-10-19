@@ -39,19 +39,20 @@ export const routes: Route[] = [
 const Sidebar = ({
   isOpen,
   toggle,
-  open,
+  onNavigate,
+  activePath,
 }: {
   isOpen?: boolean;
   toggle: () => void;
-  open?: (path: string) => void;
+  onNavigate?: (path: string) => void;
+  activePath?: string;
 }) => {
   const [subRoute, setSubRoute] = useState("");
 
   const subPaths =
     routes?.find((path) => path.title === subRoute)?.subRoutes ?? [];
 
-  const handleLogout = () => {
-  };
+  const handleLogout = () => {};
 
   return (
     <section
@@ -86,10 +87,13 @@ const Sidebar = ({
             <div className="flex flex-col gap-10 w-full">
               {routes.map(({ title, path, subRoutes }) => (
                 <p
-                  onClick={() =>{
-                    subRoutes?.length ? setSubRoute(title) : setSubRoute("")
-                    open?.(path)
+                  onClick={() => {
+                    subRoutes?.length ? setSubRoute(title) : setSubRoute("");
+                    onNavigate?.(path);
                   }}
+                  className={cn("cursor-pointer", {
+                    "active": path === activePath,
+                  })}
                 >
                   {title}
                 </p>
@@ -100,7 +104,14 @@ const Sidebar = ({
             </div>
             <div className="flex flex-col gap-10 w-full">
               {subPaths.map(({ title, path }) => (
-                <p onClick={() => open?.(path)}>{title}</p>
+                <p
+                  onClick={() => onNavigate?.(path)}
+                  className={cn("cursor-pointer", {
+                    "active": path === activePath,
+                  })}
+                >
+                  {title}
+                </p>
               ))}
             </div>
           </div>

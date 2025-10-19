@@ -1,8 +1,20 @@
 import React, { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "./ui/card";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./ui/table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "./ui/table";
 import { Badge } from "./ui/badge";
 import { Search, Plus, AlertTriangle, Package } from "lucide-react";
 import { Progress } from "./ui/progress";
@@ -30,7 +42,7 @@ const mockInventory: InventoryItem[] = [
     minStock: 200,
     expiryDate: "2025-03-15",
     location: "Storage Room A",
-    supplier: "MediSupply Co."
+    supplier: "MediSupply Co.",
   },
   {
     id: "2",
@@ -41,7 +53,7 @@ const mockInventory: InventoryItem[] = [
     minStock: 150,
     expiryDate: "2025-06-20",
     location: "Storage Room A",
-    supplier: "SafeGuard Medical"
+    supplier: "SafeGuard Medical",
   },
   {
     id: "3",
@@ -52,7 +64,7 @@ const mockInventory: InventoryItem[] = [
     minStock: 500,
     expiryDate: "2026-01-10",
     location: "Storage Room B",
-    supplier: "MedTech Solutions"
+    supplier: "MedTech Solutions",
   },
   {
     id: "4",
@@ -63,7 +75,7 @@ const mockInventory: InventoryItem[] = [
     minStock: 200,
     expiryDate: "2024-11-30",
     location: "Pharmacy",
-    supplier: "PharmaCorp"
+    supplier: "PharmaCorp",
   },
   {
     id: "5",
@@ -74,7 +86,7 @@ const mockInventory: InventoryItem[] = [
     minStock: 300,
     expiryDate: "2025-08-15",
     location: "Storage Room B",
-    supplier: "MediSupply Co."
+    supplier: "MediSupply Co.",
   },
   {
     id: "6",
@@ -85,7 +97,7 @@ const mockInventory: InventoryItem[] = [
     minStock: 100,
     expiryDate: "2024-12-20",
     location: "Emergency Room",
-    supplier: "FluidMed Inc."
+    supplier: "FluidMed Inc.",
   },
   {
     id: "7",
@@ -96,7 +108,7 @@ const mockInventory: InventoryItem[] = [
     minStock: 250,
     expiryDate: "2025-04-05",
     location: "Pharmacy",
-    supplier: "PharmaCorp"
+    supplier: "PharmaCorp",
   },
   {
     id: "8",
@@ -107,8 +119,8 @@ const mockInventory: InventoryItem[] = [
     minStock: 150,
     expiryDate: "2026-02-28",
     location: "Multiple Locations",
-    supplier: "CleanCare Medical"
-  }
+    supplier: "CleanCare Medical",
+  },
 ];
 
 export function InventoryTracking() {
@@ -134,24 +146,40 @@ export function InventoryTracking() {
   const getExpiryStatus = (expiryDate: string) => {
     const days = getDaysUntilExpiry(expiryDate);
     if (days < 0) return { label: "Expired", variant: "destructive" as const };
-    if (days <= 30) return { label: `${days} days`, variant: "destructive" as const };
-    if (days <= 90) return { label: `${days} days`, variant: "default" as const };
+    if (days <= 30)
+      return { label: `${days} days`, variant: "destructive" as const };
+    if (days <= 90)
+      return { label: `${days} days`, variant: "default" as const };
     return { label: `${days} days`, variant: "secondary" as const };
   };
 
   const getStockStatus = (quantity: number, minStock: number) => {
     const percentage = (quantity / minStock) * 100;
-    if (quantity < minStock) return { color: "text-red-600", bgColor: "bg-red-600" };
-    if (percentage < 150) return { color: "text-yellow-600", bgColor: "bg-yellow-600" };
+    if (quantity < minStock)
+      return { color: "text-red-600", bgColor: "bg-red-600" };
+    if (percentage < 150)
+      return { color: "text-yellow-600", bgColor: "bg-yellow-600" };
     return { color: "text-green-600", bgColor: "bg-green-600" };
   };
 
-  const lowStockItems = inventory.filter((item) => item.quantity < item.minStock);
-  const expiringItems = inventory.filter((item) => getDaysUntilExpiry(item.expiryDate) <= 90 && getDaysUntilExpiry(item.expiryDate) >= 0);
-  const expiredItems = inventory.filter((item) => getDaysUntilExpiry(item.expiryDate) < 0);
+  const lowStockItems = inventory.filter(
+    (item) => item.quantity < item.minStock
+  );
+  const expiringItems = inventory.filter(
+    (item) =>
+      getDaysUntilExpiry(item.expiryDate) <= 90 &&
+      getDaysUntilExpiry(item.expiryDate) >= 0
+  );
+  const expiredItems = inventory.filter(
+    (item) => getDaysUntilExpiry(item.expiryDate) < 0
+  );
 
   return (
     <div className="space-y-6">
+      <div>
+        <h2 className="text-2xl font-semibold">Inventory Overview</h2>
+        <p className="text-gray-500">Track supplies and expiry dates</p>
+      </div>
       <div className="flex items-center justify-between">
         <div className="flex-1 max-w-md">
           <div className="relative">
@@ -209,76 +237,79 @@ export function InventoryTracking() {
         </Card>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Inventory Overview</CardTitle>
-          <CardDescription>Track supplies and expiry dates</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Item Name</TableHead>
-                <TableHead>Category</TableHead>
-                <TableHead>Quantity</TableHead>
-                <TableHead>Stock Level</TableHead>
-                <TableHead>Expiry Date</TableHead>
-                <TableHead>Location</TableHead>
-                <TableHead>Status</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {filteredInventory.map((item) => {
-                const stockStatus = getStockStatus(item.quantity, item.minStock);
-                const expiryStatus = getExpiryStatus(item.expiryDate);
-                const stockPercentage = Math.min((item.quantity / item.minStock) * 100, 100);
+      <Table>
+        <TableHeader className="bg-[#C80740]">
+          <TableRow>
+            <TableHead className="text-white py-3 px-4 rounded-tl-[10px]">
+              Item Name
+            </TableHead>
+            <TableHead className="text-white py-3 px-4">Category</TableHead>
+            <TableHead className="text-white py-3 px-4">Quantity</TableHead>
+            <TableHead className="text-white py-3 px-4">Stock Level</TableHead>
+            <TableHead className="text-white py-3 px-4">Expiry Date</TableHead>
+            <TableHead className="text-white py-3 px-4">Location</TableHead>
+            <TableHead className="text-white py-3 px-4 rounded-tr-[10px]">
+              Status
+            </TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {filteredInventory.map((item) => {
+            const stockStatus = getStockStatus(item.quantity, item.minStock);
+            const expiryStatus = getExpiryStatus(item.expiryDate);
+            const stockPercentage = Math.min(
+              (item.quantity / item.minStock) * 100,
+              100
+            );
 
-                return (
-                  <TableRow key={item.id}>
-                    <TableCell>{item.name}</TableCell>
-                    <TableCell>
-                      <Badge variant="outline">{item.category}</Badge>
-                    </TableCell>
-                    <TableCell>
-                      <span className={stockStatus.color}>
-                        {item.quantity} {item.unit}
-                      </span>
-                    </TableCell>
-                    <TableCell>
-                      <div className="space-y-1">
-                        <Progress value={stockPercentage} className="h-2" />
-                        <p className="text-xs text-gray-500">
-                          Min: {item.minStock} {item.unit}
-                        </p>
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <div className="space-y-1">
-                        <div>{item.expiryDate}</div>
-                        <Badge variant={expiryStatus.variant} className="text-xs">
-                          {expiryStatus.label}
-                        </Badge>
-                      </div>
-                    </TableCell>
-                    <TableCell className="text-sm">{item.location}</TableCell>
-                    <TableCell>
-                      {item.quantity < item.minStock ? (
-                        <Badge variant="destructive">Low Stock</Badge>
-                      ) : getDaysUntilExpiry(item.expiryDate) < 0 ? (
-                        <Badge variant="destructive">Expired</Badge>
-                      ) : getDaysUntilExpiry(item.expiryDate) <= 30 ? (
-                        <Badge variant="destructive">Critical</Badge>
-                      ) : (
-                        <Badge variant="secondary">Normal</Badge>
-                      )}
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
+            return (
+              <TableRow key={item.id}>
+                <TableCell className="py-3 px-4 bg-[#A80334] text-white">
+                  {item.name}
+                </TableCell>
+                <TableCell className="py-3 px-4">
+                  <Badge variant="outline">{item.category}</Badge>
+                </TableCell>
+                <TableCell className="py-3 px-4">
+                  <span className={stockStatus.color}>
+                    {item.quantity} {item.unit}
+                  </span>
+                </TableCell>
+                <TableCell className="py-3 px-4">
+                  <div className="space-y-1">
+                    <Progress value={stockPercentage} className="h-2" />
+                    <p className="text-xs text-gray-500">
+                      Min: {item.minStock} {item.unit}
+                    </p>
+                  </div>
+                </TableCell>
+                <TableCell className="py-3 px-4">
+                  <div className="space-y-1">
+                    <div>{item.expiryDate}</div>
+                    <Badge variant={expiryStatus.variant} className="text-xs">
+                      {expiryStatus.label}
+                    </Badge>
+                  </div>
+                </TableCell>
+                <TableCell className="text-sm py-3 px-4">
+                  {item.location}
+                </TableCell>
+                <TableCell className="py-3 px-4">
+                  {item.quantity < item.minStock ? (
+                    <Badge variant="destructive">Low Stock</Badge>
+                  ) : getDaysUntilExpiry(item.expiryDate) < 0 ? (
+                    <Badge variant="destructive">Expired</Badge>
+                  ) : getDaysUntilExpiry(item.expiryDate) <= 30 ? (
+                    <Badge variant="destructive">Critical</Badge>
+                  ) : (
+                    <Badge variant="secondary">Normal</Badge>
+                  )}
+                </TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
 
       <AddInventoryDialog open={isAddOpen} onOpenChange={setIsAddOpen} />
     </div>
